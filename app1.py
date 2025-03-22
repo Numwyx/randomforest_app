@@ -4,9 +4,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import shap
 
-# 设置Matplotlib的字体参数
-plt.rcParams['font.family'] = 'SimHei' # 替换为你选择的字体
-plt.rcParams['axes.unicode_minus'] = False # 用来正常显示负号
+import matplotlib.font_manager as fm  
+
+# 添加字体文件到 Matplotlib 的字体管理器  
+font_files = fm.findSystemFonts(fontpaths=['.'], fontext='ttf')  
+for font_file in font_files:  
+    fm.fontManager.addfont(font_file)  
+
+# 设置 Matplotlib 使用中文字体  
+plt.rcParams['font.family'] = ['SimHei']  # 替换为你实际使用的字体名称  
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 st.set_page_config(    
     page_title="重症创伤性脊髓损伤患者 28 天生存状况评估",
